@@ -1,11 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-<<<<<<< HEAD
 import { pathToFileURL } from 'url';
 import dotenv from 'dotenv';
 dotenv.config();
-=======
->>>>>>> bb0ab2e (Recommit)
 import { REST, Routes } from 'discord.js';
 
 const commands = [];
@@ -18,16 +15,11 @@ export default async() => {
     const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.mjs'));
     for (const file of commandFiles) {
       const filePath = path.join(commandsPath, file);
-<<<<<<< HEAD
       await import(pathToFileURL(filePath).href).then(module => {
-=======
-      await import(filePath).then(module => {
->>>>>>> bb0ab2e (Recommit)
         commands.push(module.data.toJSON());
       });
     }
   }
-<<<<<<< HEAD
   // 必須環境変数チェック
   if (!process.env.TOKEN) {
     console.error('[regist-commands] process.env.TOKEN が設定されていません。');
@@ -64,28 +56,4 @@ export default async() => {
     console.error('[regist-commands] コマンド登録時にエラーが発生しました:', error);
     process.exit(1);
   }
-=======
-
-  const rest = new REST().setToken(process.env.TOKEN);
-
-  (async () => {
-    try {
-      console.log(`[INIT] ${commands.length}つのスラッシュコマンドを更新します。`);
-
-      const data = await rest.put(
-        Routes.applicationCommands(process.env.APPLICATION_ID),
-        { body: commands },
-      );
-      
-      const dataGuild = await rest.put(
-        Routes.applicationCommands(process.env.APPLICATION_ID),
-        { body: commands },
-      );
-
-      console.log(`[INIT] ${commands.length}つのスラッシュコマンドを更新しました。`);
-    } catch (error) {
-      console.error(error);
-    }
-  })();
->>>>>>> bb0ab2e (Recommit)
 };

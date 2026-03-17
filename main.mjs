@@ -1,11 +1,8 @@
 import fs from "fs";
 import path from "path";
-<<<<<<< HEAD
 import { pathToFileURL } from 'url';
 import dotenv from 'dotenv';
 dotenv.config();
-=======
->>>>>>> bb0ab2e (Recommit)
 import express from "express";
 import { Client, Collection, Events, GatewayIntentBits, ActivityType, EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } from "discord.js";
 import CommandsRegister from "./regist-commands.mjs";
@@ -23,12 +20,8 @@ const youtubei = new Youtubei();
 
 let postCount = 0;
 const app = express();
-<<<<<<< HEAD
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`HTTP server listening on ${PORT}`));
-=======
-app.listen(3000);
->>>>>>> bb0ab2e (Recommit)
 app.post('/', function(req, res) {
   console.log(`Received POST request.`);
   
@@ -65,11 +58,7 @@ for (const folder of commandFolders) {
   
   for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
-<<<<<<< HEAD
       import(pathToFileURL(filePath).href).then((module) => {
-=======
-    import(filePath).then((module) => {
->>>>>>> bb0ab2e (Recommit)
       client.commands.set(module.data.name, module);
     });
   }
@@ -82,11 +71,7 @@ const handlerFiles = fs.readdirSync(handlersPath).filter((file) => file.endsWith
 
 for (const file of handlerFiles) {
   const filePath = path.join(handlersPath, file);
-<<<<<<< HEAD
   import(pathToFileURL(filePath).href).then((module) => {
-=======
-  import(filePath).then((module) => {
->>>>>>> bb0ab2e (Recommit)
     handlers.set(file.slice(0, -4), module);
   });
 }
@@ -140,11 +125,7 @@ client.on("threadMembersUpdate", async (oldMembers, newMembers) => {
 });
 
 client.on("ready", async () => {
-<<<<<<< HEAD
   await client.user.setActivity({ name: '🥔を栽培中', type: ActivityType.Playing });
-=======
-  await client.user.setActivity('🥔', { type: ActivityType.Custom, state: "🥔を栽培中" });
->>>>>>> bb0ab2e (Recommit)
   console.log(`${client.user.tag} がログインしました！`);
 });
 
@@ -152,10 +133,7 @@ Notification.sync({ alter: true });
 YoutubeFeeds.sync({ alter: true });
 YoutubeNotifications.sync({ alter: true });
 
-<<<<<<< HEAD
 // コマンド登録は起動時に一度だけ行う
-=======
->>>>>>> bb0ab2e (Recommit)
 CommandsRegister();
 client.login(process.env.TOKEN);
 

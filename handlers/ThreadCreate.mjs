@@ -4,7 +4,7 @@ const Counts = new Map();
 
 export default async (message) => {
   
-  //DGMD-bot流用時、募集チャンネルでのみ反応するように。(チャンネルID未取得)
+  //特定のチャンネルでのみ反応させる場合は以下のコードを有効にしてください
   //const allowedChannelIds = ['123456789012345678'];
   //if (!allowedChannelIds.includes(message.channel.id)) return;
 
@@ -108,8 +108,6 @@ export async function second(interaction) {
 
     // 親メッセージにリアクションを付ける
     await parentMessage.react('❌');
-    // await parentMessage.react('<:001_sime:733560033845051442>');
-    // DGMD-botに流用する際の〆リアクション
     
     // 押されたら〆済みに変更
     const closeMsgId = Counts.get(thread.id)?.closeMessageId;
