@@ -57,15 +57,13 @@ npm install
 
 2. 環境変数を設定:
 
-- Discord Bot トークンなどを環境変数または `.env` ファイルで用意してください。例:
+- Discord Bot トークンなどを `.env` ファイルで用意してください。例:
 
 ```text
 DISCORD_TOKEN=your_token_here
 CLIENT_ID=your_client_id
 GUILD_ID=your_guild_id
 ```
-
-（`.env` を使う場合はプロジェクト内で適宜読み込む方法を用意してください）
 
 3. 起動:
 
